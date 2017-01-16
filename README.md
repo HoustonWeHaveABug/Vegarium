@@ -3,13 +3,13 @@ Solution to challenge https://zestedesavoir.com/forums/sujet/447/javaquarium/
 
 This program simulates the evolution of a population of animals and vegetals interacting with each other for a given period of time.
 
-##How to run the program
+## How to run the program
 
 ruby vegarium.rb \<all species file\> \<living beings file\> \<seed\> \<turns count\>
 
 \<all species file\> is the input file containing all the species with their respective attributes (sample file all_species.txt is provided in solution).
 
-\<living being file\> is the input file containing the initial population of animals and vegetals with their respective attributes (sample file living_beings.txt is provided in solution).
+\<living beings file\> is the input file containing the initial population of animals and vegetals with their respective attributes (sample file living_beings.txt is provided in solution).
 
 \<seed\> is a number used to initialize the pseudo-random generator.
 
