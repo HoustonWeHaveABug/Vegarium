@@ -53,7 +53,7 @@ class LivingBeing
 		if is_operational?
 			if is_current?
 				add_value(@attr_species.attr_growth_per_turn)
-				if !is_operational? then
+				if !is_operational?
 					puts("# #{full_name} dies of starvation")
 				end
 			else
@@ -72,12 +72,12 @@ class LivingBeing
 		while index < living_beings_count && !living_beings[index].is_target?(self)
 			index += 1
 		end
-		if index == living_beings_count then
+		if index == living_beings_count
 			index = 0
 			while index < index_rand && !living_beings[index].is_target?(self)
 				index += 1
 			end
-			if index == index_rand then
+			if index == index_rand
 				nil
 			else
 				living_beings[index]
@@ -149,14 +149,14 @@ class Animal < LivingBeing
 
 	def attack(living_beings, living_beings_count)
 		living_being = random_target(living_beings, living_beings_count)
-		if living_being != nil && !living_being.same_species?(@attr_species) then
+		if living_being != nil && !living_being.same_species?(@attr_species)
 			puts("# #{full_name} attacks #{living_being.full_name}")
 			add_value(living_being.attr_species.attr_nutritive_value)
-			if !is_operational? then
+			if !is_operational?
 				puts("# #{full_name} dies after poisonous meal")
 			end
 			living_being.add_value(-@attr_species.attr_attack_value)
-			if !living_being.is_operational? then
+			if !living_being.is_operational?
 				puts("# #{living_being.full_name} dies after being attacked")
 			end
 			living_being.flag_attack
@@ -177,7 +177,7 @@ class Animal < LivingBeing
 
 	def reproduce_with(animals, animals_count, child_name, turn)
 		animal = random_target(animals, animals_count)
-		if animal.is_partner?(self) && !animal.same_sex?(@attr_sex) then
+		if animal.is_partner?(self) && !animal.same_sex?(@attr_sex)
 			new_child(animal, child_name, turn)
 		else
 			nil
@@ -228,7 +228,7 @@ end
 module IsHermaphroditWithAge
 	def turn_start_updates
 		super
-		if is_alive? && @attr_species.attr_switch_age == @attr_age then
+		if is_alive? && @attr_species.attr_switch_age == @attr_age
 			sex_switch
 		end
 	end
@@ -237,8 +237,8 @@ end
 module IsHermaphroditOpportunist
 	def reproduce_with(animals, animals_count, child_name, turn)
 		animal = random_target(animals, animals_count)
-		if animal.is_partner?(self) then
-			if animal.same_sex?(@attr_sex) then
+		if animal.is_partner?(self)
+			if animal.same_sex?(@attr_sex)
 				sex_switch
 			end
 			new_child(animal, child_name, turn)
@@ -311,7 +311,7 @@ class Vegetal < LivingBeing
 	end
 
 	def reproduce(turn)
-		if @attr_value >= @attr_species.attr_initial_value*2 then
+		if @attr_value >= @attr_species.attr_initial_value*2
 			add_value(-@attr_species.attr_initial_value)
 			puts("# #{full_name} reproduces")
 			child = self.class.new(@attr_species, @attr_species.attr_initial_value, turn, 0, 1)

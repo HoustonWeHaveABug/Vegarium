@@ -41,15 +41,15 @@ class Simulation
 
 	def load_species(attributes, file_line)
 		begin
-			if @@species_class_lookup[attributes[0]] == nil then
+			if @@species_class_lookup[attributes[0]] == nil
 				STDERR.puts("Invalid species class \"#{attributes[0]}\" at line #{file_line} in file #{@attr_all_species_file}")
 				return false
 			end
-			if !@@species_class_lookup[attributes[0]].is_valid?(attributes[1..attributes.size-1]) then
+			if !@@species_class_lookup[attributes[0]].is_valid?(attributes[1..attributes.size-1])
 				STDERR.puts("Invalid species attributes at line #{file_line} in file #{@attr_all_species_file}")
 				return false
 			end
-			if @attr_all_species[attributes[1]] != nil then
+			if @attr_all_species[attributes[1]] != nil
 				STDERR.puts("Duplicate species \"#{attributes[1]}\" at line #{file_line} in file #{@attr_all_species_file}")
 				return false
 			end
@@ -69,7 +69,7 @@ class Simulation
 			file_line = 0
 			for line in lines
 				file_line += 1
-				if line[0, 1] != '#' && !load_species(line.chomp.split(', '), file_line) then
+				if line[0, 1] != '#' && !load_species(line.chomp.split(', '), file_line)
 					return false
 				end
 			end
@@ -84,22 +84,22 @@ class Simulation
 
 	def load_living_being(attributes, file_line)
 		begin
-			if @attr_all_species[attributes[0]] == nil then
+			if @attr_all_species[attributes[0]] == nil
 				STDERR.puts("Species \"#{attributes[0]}\" does not exist at line #{file_line} in file #{@attr_living_beings_file}")
 				return false
 			end
 			living_being_class = @@living_being_class_lookup[@attr_all_species[attributes[0]].class]
-			if !living_being_class.is_valid?(attributes[1..attributes.size-1]) then
+			if !living_being_class.is_valid?(attributes[1..attributes.size-1])
 				STDERR.puts("Invalid living being attributes at line #{file_line} in file #{@attr_living_beings_file}")
 				return false
 			end
-			if living_being_class == Vegetal then
+			if living_being_class == Vegetal
 				(1..attributes[4].to_i).each do
 					@attr_vegetals[@attr_sequence.to_s] = living_being_class.new_from_array(@attr_all_species[attributes[0]], attributes[1..attributes.size-2])
 					@attr_sequence += 1
 				end
 			else
-				if @attr_animals[attributes[4]] != nil then
+				if @attr_animals[attributes[4]] != nil
 					STDERR.puts("Duplicate animal \"#{attributes[4]}\" at line #{file_line} in file #{@attr_living_beings_file}")
 					return false
 				end
@@ -120,7 +120,7 @@ class Simulation
 			file_line = 0
 			for line in lines
 				file_line += 1
-				if line[0, 1] != '#' && !load_living_being(line.chomp.split(', '), file_line) then
+				if line[0, 1] != '#' && !load_living_being(line.chomp.split(', '), file_line)
 					return false
 				end
 			end
@@ -141,9 +141,9 @@ class Simulation
 		turn_living_beings = []
 		turn_living_beings_count = 0
 		for living_being in living_beings
-			if living_being[1].is_present?(turn) then
+			if living_being[1].is_present?(turn)
 				living_being[1].turn_start_updates
-				if living_being[1].is_alive? then
+				if living_being[1].is_alive?
 					turn_living_beings[turn_living_beings_count] = living_being[1]
 					turn_living_beings_count += 1
 				else
@@ -155,7 +155,7 @@ class Simulation
 	end
 
 	def add_living_being(living_being, turn_living_beings, turn_living_beings_count, living_beings)
-		if living_being != nil then
+		if living_being != nil
 			turn_living_beings[turn_living_beings_count] = living_being
 			turn_living_beings_count += 1
 			living_beings[@attr_sequence.to_s] = living_being
@@ -174,8 +174,8 @@ class Simulation
 			puts("# TURN #{turn} - EVENTS")
 			index = 0
 			while index < turn_animals_count
-				if turn_animals[index].is_available? then
-					if turn_animals[index].is_hungry? then
+				if turn_animals[index].is_available?
+					if turn_animals[index].is_hungry?
 						turn_animals[index].attack(turn_animals[0..turn_animals_count-1], turn_animals_count, turn_vegetals[0..turn_vegetals_count-1], turn_vegetals_count)
 					else
 						turn_animals_count = add_living_being(turn_animals[index].reproduce_with(turn_animals[0..turn_animals_count-1], turn_animals_count, @attr_sequence.to_s, turn), turn_animals, turn_animals_count, @attr_animals)
@@ -185,7 +185,7 @@ class Simulation
 			end
 			index = 0
 			while index < turn_vegetals_count
-				if turn_vegetals[index].is_available? then
+				if turn_vegetals[index].is_available?
 					turn_vegetals_count = add_living_being(turn_vegetals[index].reproduce(turn), turn_vegetals, turn_vegetals_count, @attr_vegetals)
 				end
 				index += 1
@@ -195,7 +195,7 @@ class Simulation
 			Animal.output_header
 			for animal in turn_animals
 				animal.turn_end_updates
-				if animal.is_operational? then
+				if animal.is_operational?
 					animal.output
 				end
 			end
@@ -203,9 +203,9 @@ class Simulation
 			turn_vegetal_groups = {}
 			for vegetal in turn_vegetals
 				vegetal.turn_end_updates
-				if vegetal.is_operational? then
+				if vegetal.is_operational?
 					vegetal_group_key = vegetal.group_key
-					if turn_vegetal_groups[vegetal_group_key] == nil then
+					if turn_vegetal_groups[vegetal_group_key] == nil
 						turn_vegetal_groups[vegetal_group_key] = vegetal.clone
 					else
 						turn_vegetal_groups[vegetal_group_key].add_quantity(1)
@@ -230,7 +230,7 @@ class Simulation
 		begin
 			srand(@attr_seed)
 			for turn in (1..@attr_turns_count)
-				if !run_turn(turn) then
+				if !run_turn(turn)
 					return false
 				end
 			end

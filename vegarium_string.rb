@@ -1,7 +1,7 @@
 class String
 	def is_integer?
 		begin
-			if Integer(self) then
+			if Integer(self)
 			end
 		rescue
 			false
