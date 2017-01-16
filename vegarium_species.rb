@@ -36,7 +36,7 @@ class AnimalSpecies < Species
 	end
 end
 
-module IsHermaphroditWithAgeSpecies
+module IncHermaphroditWithAgeSpecies
 	attr_reader(:attr_switch_age)
 
 	def initialize(name, initial_value, maximum_age, nutritive_value, growth_per_turn, hunger_threshold, attack_value, switch_age)
@@ -45,19 +45,22 @@ module IsHermaphroditWithAgeSpecies
 	end
 end
 
+module ExtHermaphroditWithAgeSpecies
+	def is_valid?(attributes)
+		attributes.size == 8 && super(attributes[0..attributes.size-2]) && attributes[7].is_integer_with_low_bound?(0)
+	end
+
+	def new_from_array(attributes)
+		new(attributes[0], attributes[1].to_i, attributes[2].to_i, attributes[3].to_i, attributes[4].to_i, attributes[5].to_i, attributes[6].to_i, attributes[7].to_i)
+	end
+end
+
 class CarnivorousSpecies < AnimalSpecies
 end
 
 class CarnivorousHermaphroditWithAgeSpecies < CarnivorousSpecies
-	include IsHermaphroditWithAgeSpecies
-
-	def CarnivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
-		attributes.size == 8 && super(attributes[0..attributes.size-2]) && attributes[7].is_integer_with_low_bound?(0)
-	end
-
-	def CarnivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
-		new(attributes[0], attributes[1].to_i, attributes[2].to_i, attributes[3].to_i, attributes[4].to_i, attributes[5].to_i, attributes[6].to_i, attributes[7].to_i)
-	end
+	include IncHermaphroditWithAgeSpecies
+	extend ExtHermaphroditWithAgeSpecies
 end
 
 class CarnivorousHermaphroditOpportunistSpecies < CarnivorousSpecies
@@ -67,15 +70,8 @@ class HerbivorousSpecies < AnimalSpecies
 end
 
 class HerbivorousHermaphroditWithAgeSpecies < HerbivorousSpecies
-	include IsHermaphroditWithAgeSpecies
-
-	def HerbivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
-		attributes.size == 8 && super(attributes[0..attributes.size-2]) && attributes[7].is_integer_with_low_bound?(0)
-	end
-
-	def HerbivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
-		new(attributes[0], attributes[1].to_i, attributes[2].to_i, attributes[3].to_i, attributes[4].to_i, attributes[5].to_i, attributes[6].to_i, attributes[7].to_i)
-	end
+	include IncHermaphroditWithAgeSpecies
+	extend ExtHermaphroditWithAgeSpecies
 end
 
 class HerbivorousHermaphroditOpportunistSpecies < HerbivorousSpecies
@@ -85,15 +81,8 @@ class OmnivorousSpecies < AnimalSpecies
 end
 
 class OmnivorousHermaphroditWithAgeSpecies < OmnivorousSpecies
-	include IsHermaphroditWithAgeSpecies
-
-	def OmnivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
-		attributes.size == 8 && super(attributes[0..attributes.size-2]) && attributes[7].is_integer_with_low_bound?(0)
-	end
-
-	def OmnivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
-		new(attributes[0], attributes[1].to_i, attributes[2].to_i, attributes[3].to_i, attributes[4].to_i, attributes[5].to_i, attributes[6].to_i, attributes[7].to_i)
-	end
+	include IncHermaphroditWithAgeSpecies
+	extend ExtHermaphroditWithAgeSpecies
 end
 
 class OmnivorousHermaphroditOpportunistSpecies < OmnivorousSpecies

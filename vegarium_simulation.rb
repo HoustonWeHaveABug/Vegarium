@@ -176,9 +176,9 @@ class Simulation
 			while index < turn_animals_count
 				if turn_animals[index].is_available?
 					if turn_animals[index].is_hungry?
-						turn_animals[index].attack(turn_animals[0..turn_animals_count-1], turn_animals_count, turn_vegetals[0..turn_vegetals_count-1], turn_vegetals_count)
+						turn_animals[index].attack(turn_animals, turn_animals_count, turn_vegetals, turn_vegetals_count)
 					else
-						turn_animals_count = add_living_being(turn_animals[index].reproduce_with(turn_animals[0..turn_animals_count-1], turn_animals_count, @attr_sequence.to_s, turn), turn_animals, turn_animals_count, @attr_animals)
+						turn_animals_count = add_living_being(turn_animals[index].reproduce_with(turn_animals, turn_animals_count, @attr_sequence.to_s, turn), turn_animals, turn_animals_count, @attr_animals)
 					end
 				end
 				index += 1

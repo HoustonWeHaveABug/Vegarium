@@ -3,57 +3,53 @@ class String
 	is_integer_with_low_bound?(low_bound)
 
 class Species
-	@attr_name
-	@attr_initial_value
-	@attr_maximum_age
-	@attr_nutritive_value
-	@attr_growth_per_turn
+	attr_reader(:attr_name, :attr_initial_value, :attr_maximum_age, :attr_nutritive_value, :attr_growth_per_turn)
 	initialize(name, initial_value, maximum_age, nutritive_value, growth_per_turn)
 	Species.is_valid?(attributes)
-	Species.new_from_array?(attributes)
+	Species.new_from_array(attributes)
 
 class AnimalSpecies < Species
-	@attr_hunger_threshold
-	@attr_attack_value
+	attr_reader(:attr_hunger_threshold, :attr_attack_value)
 	initialize(name, initial_value, maximum_age, nutritive_value, growth_per_turn, hunger_threshold, attack_value)
 	AnimalSpecies.is_valid?(attributes)
 	AnimalSpecies.new_from_array(attributes)
 
-module IsHermaphroditWithAgeSpecies
-	@attr_switch_age
+module IncHermaphroditWithAgeSpecies
+	attr_reader(:attr_switch_age)
 	initialize(name, initial_value, maximum_age, nutritive_value, growth_per_turn, hunger_threshold, attack_value, switch_age)
+
+module ExtHermaphroditWithAgeSpecies
+	is_valid?(attributes)
+	new_from_array(attributes)
 
 class CarnivorousSpecies < AnimalSpecies
 
 class CarnivorousHermaphroditWithAgeSpecies < CarnivorousSpecies
-	include IsHermaphroditWithAgeSpecies
-	CarnivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
-	CarnivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
+	include IncHermaphroditWithAgeSpecies
+	extend ExtHermaphroditWithAgeSpecies
 
 class CarnivorousHermaphroditOpportunistSpecies < CarnivorousSpecies
 
 class HerbivorousSpecies < AnimalSpecies
 
 class HerbivorousHermaphroditWithAgeSpecies < HerbivorousSpecies
-	include IsHermaphroditWithAgeSpecies
-	HerbivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
-	HerbivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
+	include IncHermaphroditWithAgeSpecies
+	extend ExtHermaphroditWithAgeSpecies
 
 class HerbivorousHermaphroditOpportunistSpecies < HerbivorousSpecies
 
 class OmnivorousSpecies < AnimalSpecies
 
 class OmnivorousHermaphroditWithAgeSpecies < OmnivorousSpecies
-	include IsHermaphroditWithAgeSpecies
-	OmnivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
-	OmnivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
+	include IncHermaphroditWithAgeSpecies
+	extend ExtHermaphroditWithAgeSpecies
 
 class OmnivorousHermaphroditOpportunistSpecies < OmnivorousSpecies
 
 class VegetalSpecies < Species
 
 class LivingBeing
-	@attr_species
+	attr_reader(:attr_species)
 	initialize(species, value, initial_turn, age)
 	LivingBeing.is_valid?(attributes)
 	is_operational?
@@ -77,47 +73,47 @@ class Animal < LivingBeing
 	output
 	Animal.output_footer
 
-module IsCarnivorous
+module IncCarnivorous
 	attack(animals, animals_count, vegetals, vegetals_count)
 
-module IsHerbivorous
+module IncHerbivorous
 	attack(animals, animals_count, vegetals, vegetals_count)
 
-module IsOmnivorous
+module IncOmnivorous
 	attack(animals, animals_count, vegetals, vegetals_count)
 
-module IsHermaphroditWithAge
+module IncHermaphroditWithAge
 	turn_start_updates
 
-module IsHermaphroditOpportunist
+module IncHermaphroditOpportunist
 	reproduce_with(animals, animals_count, child_name, turn)
 
 class Carnivorous < Animal
-	include IsCarnivorous
+	include IncCarnivorous
 
 class CarnivorousHermaphroditWithAge < Carnivorous
-	include IsHermaphroditWithAge
+	include IncHermaphroditWithAge
 
 class CarnivorousHermaphroditOpportunist < Carnivorous
-	include IsHermaphroditOpportunist
+	include IncHermaphroditOpportunist
 
 class Herbivorous < Animal
-	include IsHerbivorous
+	include IncHerbivorous
 
 class HerbivorousHermaphroditWithAge < Herbivorous
-	include IsHermaphroditWithAge
+	include IncHermaphroditWithAge
 
 class HerbivorousHermaphroditOpportunist < Herbivorous
-	include IsHermaphroditOpportunist
+	include IncHermaphroditOpportunist
 
 class Omnivorous < Animal
-	include IsOmnivorous
+	include IncOmnivorous
 
 class OmnivorousHermaphroditWithAge < Omnivorous
-	include IsHermaphroditWithAge
+	include IncHermaphroditWithAge
 
 class OmnivorousHermaphroditOpportunist < Omnivorous
-	include IsHermaphroditOpportunist
+	include IncHermaphroditOpportunist
 
 class Vegetal < LivingBeing
 	initialize(species, value, initial_turn, age, quantity)
@@ -133,5 +129,5 @@ class Vegetal < LivingBeing
 
 class Simulation
 	initialize(all_species_file, living_beings_file, seed, turns)
-	load()
-	run()
+	load
+	run

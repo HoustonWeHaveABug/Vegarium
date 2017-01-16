@@ -207,25 +207,25 @@ class Animal < LivingBeing
 	protected :same_sex?, :is_partner?
 end
 
-module IsCarnivorous
+module IncCarnivorous
 	def attack(animals, animals_count, vegetals, vegetals_count)
 		super(animals, animals_count)
 	end
 end
 
-module IsHerbivorous
+module IncHerbivorous
 	def attack(animals, animals_count, vegetals, vegetals_count)
 		super(vegetals, vegetals_count)
 	end
 end
 
-module IsOmnivorous
+module IncOmnivorous
 	def attack(animals, animals_count, vegetals, vegetals_count)
 		super(animals+vegetals, animals_count+vegetals_count)
 	end
 end
 
-module IsHermaphroditWithAge
+module IncHermaphroditWithAge
 	def turn_start_updates
 		super
 		if is_alive? && @attr_species.attr_switch_age == @attr_age
@@ -234,7 +234,7 @@ module IsHermaphroditWithAge
 	end
 end
 
-module IsHermaphroditOpportunist
+module IncHermaphroditOpportunist
 	def reproduce_with(animals, animals_count, child_name, turn)
 		animal = random_target(animals, animals_count)
 		if animal.is_partner?(self)
@@ -249,39 +249,39 @@ module IsHermaphroditOpportunist
 end
 
 class Carnivorous < Animal
-	include IsCarnivorous
+	include IncCarnivorous
 end
 
 class CarnivorousHermaphroditWithAge < Carnivorous
-	include IsHermaphroditWithAge
+	include IncHermaphroditWithAge
 end
 
 class CarnivorousHermaphroditOpportunist < Carnivorous
-	include IsHermaphroditOpportunist
+	include IncHermaphroditOpportunist
 end
 
 class Herbivorous < Animal
-	include IsHerbivorous
+	include IncHerbivorous
 end
 
 class HerbivorousHermaphroditWithAge < Herbivorous
-	include IsHermaphroditWithAge
+	include IncHermaphroditWithAge
 end
 
 class HerbivorousHermaphroditOpportunist < Herbivorous
-	include IsHermaphroditOpportunist
+	include IncHermaphroditOpportunist
 end
 
 class Omnivorous < Animal
-	include IsOmnivorous
+	include IncOmnivorous
 end
 
 class OmnivorousHermaphroditWithAge < Omnivorous
-	include IsHermaphroditWithAge
+	include IncHermaphroditWithAge
 end
 
 class OmnivorousHermaphroditOpportunist < Omnivorous
-	include IsHermaphroditOpportunist
+	include IncHermaphroditOpportunist
 end
 
 class Vegetal < LivingBeing

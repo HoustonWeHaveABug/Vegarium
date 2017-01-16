@@ -18,7 +18,7 @@ if !ARGV[2].is_integer_with_low_bound?(1)
 	exit false
 end
 if !ARGV[3].is_integer_with_low_bound?(1)
-	STDERR.puts('Turns is not a positive integer')
+	STDERR.puts('Turns count is not a positive integer')
 	exit false
 end
 simulation = Simulation.new(ARGV[0], ARGV[1], ARGV[2].to_i, ARGV[3].to_i)
