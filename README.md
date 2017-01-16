@@ -3,7 +3,7 @@ Solution to challenge https://zestedesavoir.com/forums/sujet/447/javaquarium/
 
 This program simulates the evolution of a population of animals and vegetals interacting with each other for a given period of time.
 
-##How to run the program:
+##How to run the program
 
 ruby vegarium.rb \<all species file\> \<living beings file\> \<seed\> \<turns count\>
 
