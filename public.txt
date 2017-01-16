@@ -1,0 +1,137 @@
+class String
+	is_integer?
+	is_integer_with_low_bound?(low_bound)
+
+class Species
+	@attr_name
+	@attr_initial_value
+	@attr_maximum_age
+	@attr_nutritive_value
+	@attr_growth_per_turn
+	initialize(name, initial_value, maximum_age, nutritive_value, growth_per_turn)
+	Species.is_valid?(attributes)
+	Species.new_from_array?(attributes)
+
+class AnimalSpecies < Species
+	@attr_hunger_threshold
+	@attr_attack_value
+	initialize(name, initial_value, maximum_age, nutritive_value, growth_per_turn, hunger_threshold, attack_value)
+	AnimalSpecies.is_valid?(attributes)
+	AnimalSpecies.new_from_array(attributes)
+
+module IsHermaphroditWithAgeSpecies
+	@attr_switch_age
+	initialize(name, initial_value, maximum_age, nutritive_value, growth_per_turn, hunger_threshold, attack_value, switch_age)
+
+class CarnivorousSpecies < AnimalSpecies
+
+class CarnivorousHermaphroditWithAgeSpecies < CarnivorousSpecies
+	include IsHermaphroditWithAgeSpecies
+	CarnivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
+	CarnivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
+
+class CarnivorousHermaphroditOpportunistSpecies < CarnivorousSpecies
+
+class HerbivorousSpecies < AnimalSpecies
+
+class HerbivorousHermaphroditWithAgeSpecies < HerbivorousSpecies
+	include IsHermaphroditWithAgeSpecies
+	HerbivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
+	HerbivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
+
+class HerbivorousHermaphroditOpportunistSpecies < HerbivorousSpecies
+
+class OmnivorousSpecies < AnimalSpecies
+
+class OmnivorousHermaphroditWithAgeSpecies < OmnivorousSpecies
+	include IsHermaphroditWithAgeSpecies
+	OmnivorousHermaphroditWithAgeSpecies.is_valid?(attributes)
+	OmnivorousHermaphroditWithAgeSpecies.new_from_array(attributes)
+
+class OmnivorousHermaphroditOpportunistSpecies < OmnivorousSpecies
+
+class VegetalSpecies < Species
+
+class LivingBeing
+	@attr_species
+	initialize(species, value, initial_turn, age)
+	LivingBeing.is_valid?(attributes)
+	is_operational?
+	is_present?(turn)
+	is_alive?
+	is_available?
+	turn_start_updates
+	turn_end_updates
+	LivingBeing.output_header
+	output
+
+class Animal < LivingBeing
+	initialize(species, value, initial_turn, age, name, sex)
+	Animal.is_valid?(attributes)
+	Animal.new_from_array(species, attributes)
+	is_hungry?
+	full_name
+	attack(living_beings, living_beings_count)
+	reproduce_with(animals, animals_count, child_name, turn)
+	Animal.output_header
+	output
+	Animal.output_footer
+
+module IsCarnivorous
+	attack(animals, animals_count, vegetals, vegetals_count)
+
+module IsHerbivorous
+	attack(animals, animals_count, vegetals, vegetals_count)
+
+module IsOmnivorous
+	attack(animals, animals_count, vegetals, vegetals_count)
+
+module IsHermaphroditWithAge
+	turn_start_updates
+
+module IsHermaphroditOpportunist
+	reproduce_with(animals, animals_count, child_name, turn)
+
+class Carnivorous < Animal
+	include IsCarnivorous
+
+class CarnivorousHermaphroditWithAge < Carnivorous
+	include IsHermaphroditWithAge
+
+class CarnivorousHermaphroditOpportunist < Carnivorous
+	include IsHermaphroditOpportunist
+
+class Herbivorous < Animal
+	include IsHerbivorous
+
+class HerbivorousHermaphroditWithAge < Herbivorous
+	include IsHermaphroditWithAge
+
+class HerbivorousHermaphroditOpportunist < Herbivorous
+	include IsHermaphroditOpportunist
+
+class Omnivorous < Animal
+	include IsOmnivorous
+
+class OmnivorousHermaphroditWithAge < Omnivorous
+	include IsHermaphroditWithAge
+
+class OmnivorousHermaphroditOpportunist < Omnivorous
+	include IsHermaphroditOpportunist
+
+class Vegetal < LivingBeing
+	initialize(species, value, initial_turn, age, quantity)
+	Vegetal.is_valid?(attributes)
+	Vegetal.new_from_array(species, attributes)
+	full_name
+	group_key
+	add_quantity(quantity)
+	reproduce(turn)
+	Vegetal.output_header
+	output
+	Vegetal.output_footer
+
+class Simulation
+	initialize(all_species_file, living_beings_file, seed, turns)
+	load()
+	run()

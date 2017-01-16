@@ -1,0 +1,136 @@
+#
+# LIVING BEINGS DATA
+#
+# One line of data per living being, separator between attributes is ", "
+#
+# GENERIC ATTRIBUTES
+# Species, Value, Initial turn, Age
+#
+# ADDITIONAL ATTRIBUTES FOR ANIMALS
+# Name, Sex
+#
+# ADDITIONAL ATTRIBUTES FOR VEGETALS
+# Quantity
+#
+Shark, 10, 1, 0, Adam de la mer, M
+Piranha, 10, 1, 0, Do Brasil, M
+Murena, 10, 1, 0, Enfant de Boheme, M
+Shark, 10, 1, 0, Adam de la mer 1, M
+Piranha, 10, 1, 0, Do Brasil 1, M
+Murena, 10, 1, 0, Enfant de Boheme 1, M
+Shark, 10, 1, 0, Adam de la mer 2, M
+Piranha, 10, 1, 0, Do Brasil 2, M
+Murena, 10, 1, 0, Enfant de Boheme 2, M
+Shark, 10, 1, 0, Adam de la mer 3, M
+Piranha, 10, 1, 0, Do Brasil 3, M
+Shark, 10, 1, 0, Adam de la mer 4, M
+Piranha, 10, 1, 0, Do Brasil 4, M
+Shark, 10, 1, 0, Adam de la mer 5, M
+Piranha, 10, 1, 0, Do Brasil 5, M
+Carp, 10, 1, 0, La Muette, F
+Bass, 10, 1, 0, Tissol, M
+Flounder, 10, 1, 0, Pleureuse, F
+Carp, 10, 1, 0, La Muette 1, F
+Bass, 10, 1, 0, Tissol 1, M
+Flounder, 10, 1, 0, Pleureuse 1, F
+Carp, 10, 1, 0, La Muette 2, F
+Bass, 10, 1, 0, Tissol 2, M
+Flounder, 10, 1, 0, Pleureuse 2, F
+Carp, 10, 1, 0, La Muette 3, F
+Bass, 10, 1, 0, Tissol 3, M
+Flounder, 10, 1, 0, Pleureuse 3, F
+Carp, 10, 1, 0, La Muette 4, F
+Bass, 10, 1, 0, Tissol 4, M
+Flounder, 10, 1, 0, Pleureuse 4, F
+Carp, 10, 1, 0, La Muette 5, F
+Bass, 10, 1, 0, Tissol 5, M
+Carp, 10, 1, 0, La Muette 6, F
+Bass, 10, 1, 0, Tissol 6, M
+Carp, 10, 1, 0, La Muette 7, F
+Bass, 10, 1, 0, Tissol 7, M
+Carp, 10, 1, 0, La Muette 8, F
+Bass, 10, 1, 0, Tissol 8, M
+Carp, 10, 1, 0, La Muette 9, F
+Bass, 10, 1, 0, Tissol 9, M
+Tuna, 10, 1, 0, Edonnay, M
+Grouper, 10, 1, 0, Sepa, M
+Clownfish, 10, 1, 0, Bozo, M
+Tuna, 10, 1, 0, Edonnay 1, M
+Grouper, 10, 1, 0, Sepa 1, M
+Clownfish, 10, 1, 0, Bozo 1, M
+Tuna, 10, 1, 0, Edonnay 2, M
+Grouper, 10, 1, 0, Sepa 2, M
+Clownfish, 10, 1, 0, Bozo 2, M
+Tuna, 10, 1, 0, Edonnay 3, M
+Grouper, 10, 1, 0, Sepa 3, M
+Clownfish, 10, 1, 0, Bozo 3, M
+Tuna, 10, 1, 0, Edonnay 4, M
+Grouper, 10, 1, 0, Sepa 4, M
+Tuna, 10, 1, 0, Edonnay 5, M
+Grouper, 10, 1, 0, Sepa 5, M
+Tuna, 10, 1, 0, Edonnay 6, M
+Grouper, 10, 1, 0, Sepa 6, M
+Tuna, 10, 1, 0, Edonnay 7, M
+Grouper, 10, 1, 0, Sepa 7, M
+Shark, 10, 1, 0, Eve, F
+Piranha, 10, 1, 0, Samba, F
+Murena, 10, 1, 0, Ouille, M
+Shark, 10, 1, 0, Eve 1, F
+Piranha, 10, 1, 0, Samba 1, F
+Murena, 10, 1, 0, Ouille 1, M
+Shark, 10, 1, 0, Eve 2, F
+Piranha, 10, 1, 0, Samba 2, F
+Murena, 10, 1, 0, Ouille 2, M
+Shark, 10, 1, 0, Eve 3, F
+Piranha, 10, 1, 0, Samba 3, F
+Shark, 10, 1, 0, Eve 4, F
+Piranha, 10, 1, 0, Samba 4, F
+Shark, 10, 1, 0, Eve 5, F
+Piranha, 10, 1, 0, Samba 5, F
+Carp, 10, 1, 0, Diem, M
+Bass, 10, 1, 0, Amine, F
+Flounder, 10, 1, 0, Rieuse, F
+Carp, 10, 1, 0, Diem 1, M
+Bass, 10, 1, 0, Amine 1, F
+Flounder, 10, 1, 0, Rieuse 1, F
+Carp, 10, 1, 0, Diem 2, M
+Bass, 10, 1, 0, Amine 2, F
+Flounder, 10, 1, 0, Rieuse 2, F
+Carp, 10, 1, 0, Diem 3, M
+Bass, 10, 1, 0, Amine 3, F
+Flounder, 10, 1, 0, Rieuse 3, F
+Carp, 10, 1, 0, Diem 4, M
+Bass, 10, 1, 0, Amine 4, F
+Flounder, 10, 1, 0, Rieuse 4, F
+Carp, 10, 1, 0, Diem 5, M
+Bass, 10, 1, 0, Amine 5, F
+Carp, 10, 1, 0, Diem 6, M
+Bass, 10, 1, 0, Amine 6, F
+Carp, 10, 1, 0, Diem 7, M
+Bass, 10, 1, 0, Amine 7, F
+Carp, 10, 1, 0, Diem 8, M
+Bass, 10, 1, 0, Amine 8, F
+Carp, 10, 1, 0, Diem 9, M
+Bass, 10, 1, 0, Amine 9, F
+Tuna, 10, 1, 0, Tonelle, F
+Grouper, 10, 1, 0, Sepi, F
+Clownfish, 10, 1, 0, Auguste, M
+Tuna, 10, 1, 0, Tonelle 1, F
+Grouper, 10, 1, 0, Sepi 1, F
+Clownfish, 10, 1, 0, Auguste 1, M
+Tuna, 10, 1, 0, Tonelle 2, F
+Grouper, 10, 1, 0, Sepi 2, F
+Clownfish, 10, 1, 0, Auguste 2, M
+Tuna, 10, 1, 0, Tonelle 3, F
+Grouper, 10, 1, 0, Sepi 3, F
+Clownfish, 10, 1, 0, Auguste 3, M
+Tuna, 10, 1, 0, Tonelle 4, F
+Grouper, 10, 1, 0, Sepi 4, F
+Tuna, 10, 1, 0, Tonelle 5, F
+Grouper, 10, 1, 0, Sepi 5, F
+Tuna, 10, 1, 0, Tonelle 6, F
+Grouper, 10, 1, 0, Sepi 6, F
+Tuna, 10, 1, 0, Tonelle 7, F
+Grouper, 10, 1, 0, Sepi 7, F
+Green Alga, 10, 1, 0, 120
+Red Alga, 10, 1, 0, 120

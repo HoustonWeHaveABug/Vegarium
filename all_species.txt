@@ -1,0 +1,25 @@
+#
+# SPECIES DATA
+#
+# One line of data per species, separator between attributes is ", "
+#
+# GENERIC ATTRIBUTES
+# Class, Name, Initial value, Maximum age, Nutritive value, Growth per turn
+#
+# ADDITIONAL ATTRIBUTES FOR ANIMAL SPECIES
+# Starvation threshold, Attack value
+#
+# ADDITIONAL ATTRIBUTE FOR HERMAPHRODIT WITH AGE SPECIES
+# Switch age
+#
+Carnivorous, Shark, 10, 20, 6, -1, 7, 6
+CarnivorousHermaphroditWithAge, Piranha, 10, 20, 2, -1, 7, 6, 10
+CarnivorousHermaphroditOpportunist, Murena, 10, 20, 4, -1, 7, 6
+Herbivorous, Carp, 10, 20, 4, -1, 9, 2
+HerbivorousHermaphroditWithAge, Bass, 10, 20, 6, -1, 9, 2, 10
+HerbivorousHermaphroditOpportunist, Flounder, 10, 20, 8, -1, 9, 2
+Omnivorous, Tuna, 10, 20, 7, -1, 8, 4
+OmnivorousHermaphroditWithAge, Grouper, 10, 20, 5, -1, 8, 4, 10
+OmnivorousHermaphroditOpportunist, Clownfish, 10, 20, 3, -1, 8, 4
+Vegetal, Green Alga, 10, 20, 4, 1
+Vegetal, Red Alga, 10, 20, 2, 1
