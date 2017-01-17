@@ -128,6 +128,7 @@ class Vegetal < LivingBeing
 	Vegetal.output_footer
 
 class Simulation
-	initialize(all_species_file, living_beings_file, seed, turns)
+	initialize(all_species_file, living_beings_file, seed, turns_count)
+	Simulation.is_valid?(attributes)
 	load
 	run

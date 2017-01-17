@@ -1,3 +1,4 @@
+require("./vegarium_string.rb")
 require("./vegarium_species.rb")
 require("./vegarium_living_being.rb")
 
@@ -37,6 +38,31 @@ class Simulation
 		@attr_animals = {}
 		@attr_vegetals = {}
 		@attr_sequence = 0
+	end
+
+	def Simulation.is_valid?(attributes)
+		if attributes.size != 4
+			STDERR.puts("Invalid number of attributes for this simulation")
+			STDERR.puts("Expected attributes are <all species file> <living being file> <seed> <turns count>")
+			return false
+		end
+		if !File.exist?(attributes[0])
+			STDERR.puts("All species file #{attributes[0]} does not exist")
+			return false
+		end
+		if !File.exist?(attributes[1])
+			STDERR.puts("Living beings file #{attributes[1]} does not exist")
+			return false
+		end
+		if !attributes[2].is_integer_with_low_bound?(1)
+			STDERR.puts('Seed is not a positive integer')
+			return false
+		end
+		if !attributes[3].is_integer_with_low_bound?(1)
+			STDERR.puts('Turns count is not a positive integer')
+			return false
+		end
+		true
 	end
 
 	def load_species(attributes, file_line)
