@@ -207,24 +207,6 @@ class Animal < LivingBeing
 	protected :same_sex?, :is_partner?
 end
 
-module IncCarnivorous
-	def attack(animals, animals_count, vegetals, vegetals_count)
-		super(animals, animals_count)
-	end
-end
-
-module IncHerbivorous
-	def attack(animals, animals_count, vegetals, vegetals_count)
-		super(vegetals, vegetals_count)
-	end
-end
-
-module IncOmnivorous
-	def attack(animals, animals_count, vegetals, vegetals_count)
-		super(animals+vegetals, animals_count+vegetals_count)
-	end
-end
-
 module IncHermaphroditWithAge
 	def turn_start_updates
 		super
@@ -249,7 +231,9 @@ module IncHermaphroditOpportunist
 end
 
 class Carnivorous < Animal
-	include IncCarnivorous
+	def attack(animals, animals_count, vegetals, vegetals_count)
+		super(animals, animals_count)
+	end
 end
 
 class CarnivorousHermaphroditWithAge < Carnivorous
@@ -261,7 +245,9 @@ class CarnivorousHermaphroditOpportunist < Carnivorous
 end
 
 class Herbivorous < Animal
-	include IncHerbivorous
+	def attack(animals, animals_count, vegetals, vegetals_count)
+		super(vegetals, vegetals_count)
+	end
 end
 
 class HerbivorousHermaphroditWithAge < Herbivorous
@@ -273,7 +259,9 @@ class HerbivorousHermaphroditOpportunist < Herbivorous
 end
 
 class Omnivorous < Animal
-	include IncOmnivorous
+	def attack(animals, animals_count, vegetals, vegetals_count)
+		super(animals+vegetals, animals_count+vegetals_count)
+	end
 end
 
 class OmnivorousHermaphroditWithAge < Omnivorous

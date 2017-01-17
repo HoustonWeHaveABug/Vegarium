@@ -73,15 +73,6 @@ class Animal < LivingBeing
 	output
 	Animal.output_footer
 
-module IncCarnivorous
-	attack(animals, animals_count, vegetals, vegetals_count)
-
-module IncHerbivorous
-	attack(animals, animals_count, vegetals, vegetals_count)
-
-module IncOmnivorous
-	attack(animals, animals_count, vegetals, vegetals_count)
-
 module IncHermaphroditWithAge
 	turn_start_updates
 
@@ -89,7 +80,7 @@ module IncHermaphroditOpportunist
 	reproduce_with(animals, animals_count, child_name, turn)
 
 class Carnivorous < Animal
-	include IncCarnivorous
+	attack(animals, animals_count, vegetals, vegetals_count)
 
 class CarnivorousHermaphroditWithAge < Carnivorous
 	include IncHermaphroditWithAge
@@ -98,7 +89,7 @@ class CarnivorousHermaphroditOpportunist < Carnivorous
 	include IncHermaphroditOpportunist
 
 class Herbivorous < Animal
-	include IncHerbivorous
+	attack(animals, animals_count, vegetals, vegetals_count)
 
 class HerbivorousHermaphroditWithAge < Herbivorous
 	include IncHermaphroditWithAge
@@ -107,7 +98,7 @@ class HerbivorousHermaphroditOpportunist < Herbivorous
 	include IncHermaphroditOpportunist
 
 class Omnivorous < Animal
-	include IncOmnivorous
+	attack(animals, animals_count, vegetals, vegetals_count)
 
 class OmnivorousHermaphroditWithAge < Omnivorous
 	include IncHermaphroditWithAge
