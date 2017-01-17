@@ -41,28 +41,34 @@ class Simulation
 	end
 
 	def Simulation.is_valid?(attributes)
-		if attributes.size != 4
-			STDERR.puts("Invalid number of attributes for this simulation")
-			STDERR.puts("Expected attributes are <all species file> <living being file> <seed> <turns count>")
-			return false
+		begin
+			if attributes.size != 4
+				STDERR.puts("Invalid number of attributes for this simulation")
+				STDERR.puts("Expected attributes are <all species file> <living being file> <seed> <turns count>")
+				return false
+			end
+			if !File.exist?(attributes[0])
+				STDERR.puts("All species file #{attributes[0]} does not exist")
+				return false
+			end
+			if !File.exist?(attributes[1])
+				STDERR.puts("Living beings file #{attributes[1]} does not exist")
+				return false
+			end
+			if !attributes[2].is_integer_with_low_bound?(1)
+				STDERR.puts('Seed is not a positive integer')
+				return false
+			end
+			if !attributes[3].is_integer_with_low_bound?(1)
+				STDERR.puts('Turns count is not a positive integer')
+				return false
+			end
+			true
+		rescue Exception => exception
+			STDERR.puts("Exception \"#{exception}\" rescued in method #{self.class}.#{__method__}")
+			STDERR.puts(exception.backtrace)
+			false
 		end
-		if !File.exist?(attributes[0])
-			STDERR.puts("All species file #{attributes[0]} does not exist")
-			return false
-		end
-		if !File.exist?(attributes[1])
-			STDERR.puts("Living beings file #{attributes[1]} does not exist")
-			return false
-		end
-		if !attributes[2].is_integer_with_low_bound?(1)
-			STDERR.puts('Seed is not a positive integer')
-			return false
-		end
-		if !attributes[3].is_integer_with_low_bound?(1)
-			STDERR.puts('Turns count is not a positive integer')
-			return false
-		end
-		true
 	end
 
 	def load_species(attributes, file_line)
@@ -80,12 +86,11 @@ class Simulation
 				return false
 			end
 			@attr_all_species[attributes[1]] = @@species_class_lookup[attributes[0]].new_from_array(attributes[1..attributes.size-1])
+			true
 		rescue Exception => exception
 			STDERR.puts("Exception \"#{exception}\" rescued in method #{self.class}.#{__method__}")
 			STDERR.puts(exception.backtrace)
 			false
-		else
-			true
 		end
 	end
 
@@ -99,12 +104,11 @@ class Simulation
 					return false
 				end
 			end
+			true
 		rescue Exception => exception
 			STDERR.puts("Exception \"#{exception}\" rescued in method #{self.class}.#{__method__}")
 			STDERR.puts(exception.backtrace)
 			false
-		else
-			true
 		end
 	end
 
@@ -131,12 +135,11 @@ class Simulation
 				end
 				@attr_animals[attributes[4]] = living_being_class.new_from_array(@attr_all_species[attributes[0]], attributes[1..attributes.size-1])
 			end
+			true
 		rescue Exception => exception
 			STDERR.puts("Exception \"#{exception}\" rescued in method #{self.class}.#{__method__}")
 			STDERR.puts(exception.backtrace)
 			false
-		else
-			true
 		end
 	end
 
@@ -150,12 +153,11 @@ class Simulation
 					return false
 				end
 			end
+			true
 		rescue Exception => exception
 			STDERR.puts("Exception \"#{exception}\" rescued in method #{self.class}.#{__method__}")
 			STDERR.puts(exception.backtrace)
 			false
-		else
-			true
 		end
 	end
 
@@ -243,12 +245,11 @@ class Simulation
 				vegetal[1].output
 			end
 			Vegetal.output_footer
+			true
 		rescue Exception => exception
 			STDERR.puts("Exception \"#{exception}\" rescued in method #{self.class}.#{__method__}")
 			STDERR.puts(exception.backtrace)
 			false
-		else
-			true
 		end
 	end
 
@@ -260,12 +261,11 @@ class Simulation
 					return false
 				end
 			end
+			true
 		rescue Exception => exception
 			STDERR.puts("Exception \"#{exception}\" rescued in method #{self.class}.#{__method__}")
 			STDERR.puts(exception.backtrace)
 			false
-		else
-			true
 		end
 	end
 

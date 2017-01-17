@@ -3,10 +3,9 @@ class String
 		begin
 			if Integer(self)
 			end
+			true
 		rescue
 			false
-		else
-			true
 		end
 	end
 
